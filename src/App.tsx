@@ -1,9 +1,10 @@
-import React from 'react'
+import Home from './components/Home/Home'
 import TintingPage from './components/TintingPage'
-import './App.css'
+
 const App = () => {
   return (
     <div className="App">
+      {/* <Home /> */}
       <TintingPage />
     </div>
   )
