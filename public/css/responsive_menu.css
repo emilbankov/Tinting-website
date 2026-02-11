@@ -1,0 +1,380 @@
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* button styles */
+.responsive-menu-btn{
+	display: none;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+	cursor: pointer;
+	padding: 6px 16px;
+	float: left;
+	-webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  transition: all .4s ease;
+}
+.responsive-menu-btn:before{
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 30px;
+  bottom: 0px;
+  background: #9933cc;
+  transform: skewX(-14deg);
+  -ms-transform: skewX(-14deg);
+  -webkit-transform: skewX(-14deg);
+  z-index: 0;
+}
+.responsive-menu-btn:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 44px;
+  bottom: 0px;
+  background: #9933cc;
+  z-index: 0;
+}
+
+/* about hamburger menu */
+.icon-navicon {
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: background-color 0.1s;
+  -moz-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+  z-index: 1;
+}
+.icon-navicon:before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    display: inline-block;
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+.icon-navicon:after {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+.icon-navicon:after,
+.icon-navicon:before {
+    -webkit-transition: transform 0.2s;
+    -moz-transition: transform 0.2s;
+    transition: transform 0.2s;
+}
+.active .icon-navicon {
+    background-color: transparent;
+}
+.active .icon-navicon:before {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	top: 0;
+}
+.active .icon-navicon:after {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 0;
+}
+
+
+/* General styles for all menus */
+.cbp-spmenu {
+	background: #2d2d2d;
+	position: fixed;
+}
+.cbp-spmenu h3 {
+	color: #fff;
+	font-size: 1.9em;
+  padding: 26px 20px;
+  margin: 0 0 20px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #404040;
+}
+.cbp-spmenu .cd-accordion-menu{
+	margin: 0px;
+	padding: 0px 0px 20px 0px;
+	list-style-type: none;
+  border-bottom: 2px solid #404040;
+}
+.cbp-spmenu .cd-accordion-menu ul {
+  /* by default hide all sub menus */
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+.cbp-spmenu .cd-accordion-menu li {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cbp-spmenu .cd-accordion-menu a {
+  position: relative;
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 8px 30px 8px 20px;
+  cursor: pointer;
+  -webkit-transition: all 400ms;
+  -moz-transition: all 400ms;
+  -o-transition: all 400ms;
+  transition: all 400ms;
+}
+.cbp-spmenu .cd-accordion-menu a:hover{
+  color: #034dc1;
+}
+.cbp-spmenu .cd-accordion-menu li.responsive-current a{
+  color: #034dc1;
+}
+
+.cbp-spmenu .cd-accordion-menu input[type=checkbox] {
+  /* hide native checkbox */
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+  right: 0px;
+}
+.cbp-spmenu .cd-accordion-menu label {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	display: block;
+	font-size: 0px;
+	color: #000;
+	text-transform: uppercase;
+	height: 36px;
+	width: 30px;
+	cursor: pointer;
+	z-index: 1;
+	-webkit-transition: all 400ms;
+	-moz-transition: all 400ms;
+	-o-transition: all 400ms;
+	transition: all 400ms;
+}
+
+.cd-accordion-menu label:before {
+  /* icons */
+  content: '\f105';
+  font-family: 'Font Awesome 5 Pro';
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.cbp-spmenu .cd-accordion-menu input[type=checkbox]:checked + label::before {
+  /* rotate arrow */
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  -moz-transform: translateY(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) rotate(90deg);
+  -o-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
+}
+.cbp-spmenu .cd-accordion-menu input[type=checkbox]:checked + label + ul,
+.cbp-spmenu .cd-accordion-menu input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+  /* use label:nth-of-type(n) to fix a bug on safari (<= 8.0.8) with multiple adjacent-sibling selectors*/
+  /* show children when item is checked */
+  display: block;
+}
+.cbp-spmenu .cd-accordion-menu ul{
+	background: #111;
+  padding: 10px 0px;
+}
+.cbp-spmenu .cd-accordion-menu ul a {
+  box-shadow: none;
+  padding: 7px 30px 7px 30px;
+  text-transform: none;
+  font-weight: 500;
+  font-size: 13px;
+}
+.cbp-spmenu .cd-accordion-menu ul label{
+  height: 39px;
+}
+.cbp-spmenu .cd-accordion-menu ul ul{
+	background: #000;
+}
+.cbp-spmenu .cd-accordion-menu ul ul a {
+  padding-left: 40px;
+}
+.cbp-spmenu .cd-accordion-menu ul ul ul a {
+  padding-left: 50px;
+}
+.cbp-spmenu .cd-accordion-menu.animated label:before {
+  /* this class is used if you're using jquery to animate the accordion */
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+
+/* Orientation-dependent styles for the content of the menu */
+.cbp-spmenu-vertical {
+	width: 330px;
+	height: 100%;
+	top: 0;
+	z-index: 1000;
+	overflow-y: auto;
+}
+.cbp-spmenu-horizontal {
+	width: 100%;
+	height: 150px;
+	left: 0;
+	z-index: 1000;
+	overflow: hidden;
+}
+.cbp-spmenu-horizontal h3 {
+	height: 100%;
+	width: 20%;
+	float: left;
+}
+.cbp-spmenu-horizontal a {
+	float: left;
+	width: 20%;
+	padding: 0.8em;
+	border-left: 1px solid #258ecd;
+}
+
+/* Vertical menu that slides from the left or right */
+.cbp-spmenu-left {
+	left: -330px;
+}
+.cbp-spmenu-right {
+	right: -330px;
+}
+.cbp-spmenu-left.cbp-spmenu-open {
+	left: 0px;
+}
+.cbp-spmenu-right.cbp-spmenu-open {
+	right: 0px;
+}
+
+/* Horizontal menu that slides from the top or bottom */
+.cbp-spmenu-top {
+	top: -150px;
+}
+.cbp-spmenu-bottom {
+	bottom: -150px;
+}
+.cbp-spmenu-top.cbp-spmenu-open {
+	top: 0px;
+}
+.cbp-spmenu-bottom.cbp-spmenu-open {
+	bottom: 0px;
+}
+
+/* Push classes applied to the body */
+.cbp-spmenu-push {
+	overflow-y: auto;
+  overflow-x: hidden;
+	position: relative;
+	left: 0;
+	top: 0;
+}
+.cbp-spmenu-push-toright {
+	left: 330px;
+}
+.cbp-spmenu-push-toright:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0,0,0,0.75);
+    z-index: 1110;
+}
+.cbp-spmenu-push-toleft {
+	left: -330px;
+}
+.cbp-spmenu-push-totop {
+	top: 150px;
+}
+
+/* Transitions */
+.cbp-spmenu,
+.cbp-spmenu-push {
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+/* Example media queries */
+@media screen and (max-width: 55.1875em){
+
+	.cbp-spmenu-horizontal {
+		font-size: 75%;
+		height: 110px;
+	}
+
+	.cbp-spmenu-top {
+		top: -110px;
+	}
+
+	.cbp-spmenu-bottom {
+		bottom: -110px;
+	}
+
+}
+
+@media screen and (max-height: 26.375em){
+
+	.cbp-spmenu-vertical {
+		font-size: 90%;
+		width: 190px;
+	}
+
+	.cbp-spmenu-left,
+	.cbp-spmenu-push-toleft {
+		left: -190px;
+	}
+
+	.cbp-spmenu-right {
+		right: -190px;
+	}
+
+	.cbp-spmenu-push-toright {
+		left: 190px;
+	}
+}
