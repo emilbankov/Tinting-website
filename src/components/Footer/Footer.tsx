@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Footer() {
     return (
         <>
@@ -6,15 +8,12 @@ export default function Footer() {
                     <div className="footer-flex">
                         <div className="flex-item">
                             <div className="footer-logo">
-                                <a href="/">
+                                <Link to="/">
                                     <img
                                         src="/images/logo.png"
                                         alt="Tintcom"
                                     />
-                                </a>
-                            </div>
-                            <div className="rights">
-                                © 2018-2024 Тинтком ООД. Всички права запазени
+                                </Link>
                             </div>
                             <div className="socials">
                                 <a href="https://www.facebook.com/Tintcomcom">
@@ -29,50 +28,50 @@ export default function Footer() {
                                     <div className="foot-content-inner">
                                         <ul>
                                             <li>
-                                                <a className="ml-221" href="bg/Instruktsii_za_montazh-c113">
+                                                <Link className="ml-221" to="bg/Instruktsii_za_montazh-c113">
                                                     Инструкции за монтаж
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a className="ml-231" href="bg/Info-c443">
+                                                <Link className="ml-231" to="bg/Info-c443">
                                                     Инфо
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a className="ml-232" href="blog-1-232">
+                                                <Link className="ml-232" to="blog-1-232">
                                                     Блог
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a className="ml-223" href="bg/Za_nas-c230p">
+                                                <Link className="ml-223" to="bg/Za_nas-c230p">
                                                     За нас
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
+                                                <Link
                                                     className="ml-224"
-                                                    href="bg/Zakoni_za_zatymnyavane_na_avtostykla-c153"
+                                                    to="bg/Zakoni_za_zatymnyavane_na_avtostykla-c153"
                                                 >
                                                     Закони за затъмняване на автостъкла
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a className="ml-225" href="bg/Obshti_usloviya-c154">
+                                                <Link className="ml-225" to="bg/Obshti_usloviya-c154">
                                                     Общи условия
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
+                                                <Link
                                                     className="ml-226"
-                                                    href="bg/Politika_za_poveritelnost-c444"
+                                                    to="bg/Politika_za_poveritelnost-c444"
                                                 >
                                                     Политика за поверителност
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a className="ml-13" href="bg/Dostavka-c436">
+                                                <Link className="ml-13" to="bg/Dostavka-c436">
                                                     Доставка
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -86,19 +85,19 @@ export default function Footer() {
                                     <div className="foot-content-inner">
                                         <ul>
                                             <li>
-                                                <a href="/page/login?sign_in">Вход</a>
+                                                <Link to="/page/login?sign_in">Вход</Link>
                                             </li>
                                             <li>
-                                                <a href="/page/login?lost_password">Забравена парола</a>
+                                                <Link to="/page/login?lost_password">Забравена парола</Link>
                                             </li>
                                             <li>
-                                                <a href="/page/login?sign_up">Регистрация</a>
+                                                <Link to="/page/login?sign_up">Регистрация</Link>
                                             </li>
                                             <li>
-                                                <a href="/page/step1">Потребителска кошница</a>
+                                                <Link to="/page/step1">Потребителска кошница</Link>
                                             </li>
                                             <li>
-                                                <a href="/bg/favorites-products">Любими продукти</a>
+                                                <Link to="/bg/favorites-products">Любими продукти</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -121,14 +120,12 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="bottom-line">
-                    <div className="wrapper clearfloat">
-                        <a href="https://webrix-studio.com" target="_blank">
-                            Изработка на онлайн магазин: Уебрикс
-                        </a>
-                    </div>
-                </div>
             </footer>
+            <div className="copyright-bar">
+                <div className="copyright-content">
+                    &copy; 2026 Tintify - All rights reserved
+                </div>
+            </div>
         </>
     );
 };

@@ -2445,6 +2445,23 @@ footer .socials a {
     height: auto;
 }
 
+/*--------------- copyright bar -----------------*/
+.copyright-bar {
+    width: 100%;
+    background-color: #000000;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.copyright-content {
+    color: #ccc;
+    font-size: 14px;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
 /*--------------- breadcrumb -----------------*/
 .breadcrumb {
     font-size: 12px;
