@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function HomeHeader() {
     return (
         <>
@@ -18,36 +20,30 @@ export default function HomeHeader() {
                 </div>
                 <div className="header-main">
                     <div className="logo">
-                        <a href="/">
+                        <Link to="/">
                             <img src="/images/logo.png" alt="Tintcom" />
-                        </a>
+                        </Link>
                     </div>
                     <nav id="menu">
                         <ul>
                             <li className="lvl-1">
-                                <a className="ml-221" href="bg/Instruktsii_za_montazh-c113">
-                                    Инструкции за монтаж
-                                </a>
-                            </li>
-                            <li className="lvl-1">
-                                <a className="ml-223" href="bg/Za_nas-c230p">
+                                <Link className="ml-223" to="/about-us">
                                     За нас
-                                </a>
+                                </Link>
                             </li>
                             <li className="lvl-1">
-                                <a className="ml-23" href="bg/Kak_da_porychame-c435">
+                                <Link className="ml-23" to="/how-to-order">
                                     Как да поръчаме
-                                </a>
+                                </Link>
                             </li>
                             <li className="lvl-1">
-                                <a className="ml-5" href="bg/Kontakti-c171">
+                                <Link className="ml-5" to="/contact">
                                     Контакти
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
                     <div className="header-right">
-                        <div className="search-link s-search">Търсене</div>
                         <div className="login">
                             <div className="login-choice">
                                 <i className="fa-regular fa-user" />
@@ -94,33 +90,35 @@ export default function HomeHeader() {
                                         Вход
                                     </a>
                                     <div className="just-text">
-                                        <a href="/page/login?lost_password" className="link">
+                                        <Link to="/page/login?lost_password" className="link">
                                             Забравена парола?
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="list-btm">
-                                    <a href="/page/login?sign_up" className="btn">
+                                    <Link to="/page/login?sign_up" className="btn">
                                         Регистрирайте се
-                                    </a>
+                                    </Link>
                                     <div className="just-text">Вие сте нов потребител?</div>
                                 </div>
                             </div>
                         </div>
                         <div className="favourite">
-                            <a href="/bg/favorites-products" />
+                            <Link to="/favorites" />
                         </div>
                         <div className="cart">
-                            <a
-                                href="/page/step1"
-                                onclick="$(this).closest('.cart').toggleClass('active');
-                         return false;"
+                            <Link
+                                to="/page/step1"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.querySelector('.cart').classList.toggle('active');
+                                }}
                                 title="Потребителска кошница"
                             >
                                 <i className="fa-solid fa-cart-shopping" />
                                 <span className="broi-number">0</span>
                                 <em>0.00 £</em>
-                            </a>
+                            </Link>
                             <div className="cart-list" />
                         </div>
                         <div className="responsive-menu-btn showRightPush">

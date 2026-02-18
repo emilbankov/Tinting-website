@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 // components/MobileMenu/MobileMenu.tsx
 export default function MobileMenu() {
     return (
@@ -8,24 +10,24 @@ export default function MobileMenu() {
             <h3>Меню</h3>
             <ul className="cd-accordion-menu animated jq-menu-main-responsive">
                 <li className=" lvl-1">
-                    <a className="ml-1" href="/">
+                    <Link className="ml-1" to="/">
                         Начало
-                    </a>
+                    </Link>
                 </li>
                 <li className=" lvl-1">
-                    <a className="ml-223" href="bg/Za_nas-c230p">
+                    <Link className="ml-223" to="/about-us">
                         За нас
-                    </a>
+                    </Link>
                 </li>
                 <li className=" lvl-1">
-                    <a className="ml-225" href="bg/Obshti_usloviya-c154">
+                    <Link className="ml-225" to="/terms-and-conditions">
                         Общи условия
-                    </a>
+                    </Link>
                 </li>
                 <li className=" lvl-1">
-                    <a className="ml-226" href="bg/Politika_za_poveritelnost-c444">
+                    <Link className="ml-226" to="/privacy-policy">
                         Политика за поверителност
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>
