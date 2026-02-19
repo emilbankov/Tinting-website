@@ -3,7 +3,7 @@ import { CarCanvas, CarControls, CarModelContext } from './Car Model/CarModel';
 
 // Create context provider wrapper
 const CarModelProvider = ({ children }: { children: React.ReactNode }) => {
-  const [selectedModel, setSelectedModel] = useState('./bmw_g20.glb');
+  const [selectedModel, setSelectedModel] = useState('/models/bmw_g20.glb');
   const [tint, setTint] = useState(100);
   const [selectedCategories, setSelectedCategories] = useState({
     front_windows: false,

@@ -27,7 +27,7 @@ export const CarModelContext = createContext<{
     taillights: boolean;
   }>>;
 }>({
-  selectedModel: './bmw_g20.glb',
+  selectedModel: '/models/bmw_g20.glb',
   setSelectedModel: () => {},
   tint: 100,
   setTint: () => {},
@@ -97,6 +97,10 @@ const ClickHandler = ({ scene }: { scene: THREE.Group }) => {
 // Canvas component for 3D model
 export const CarCanvas = () => {
   const { selectedModel, tint, selectedCategories } = useContext(CarModelContext);
+  
+  // Debug: Log the current model path
+  console.log('Loading model:', selectedModel);
+  
   const { scene, nodes } = useGLTF(selectedModel);
   const originalMaterials = useRef<Map<string, THREE.Material>>(new Map());
 
@@ -231,7 +235,7 @@ export const CarCanvas = () => {
   let modelScale = [1.4, 1.4, 1.4];
   let modelRotation = [0, Math.PI / 0.6, 0];
 
-  if (selectedModel === './e46.glb') {
+  if (selectedModel === '/models/e46.glb') {
     // E46 specific adjustments
     cameraPosition = [center.x, center.y + size.y * 0.8, center.z + size.z * 1.5];
     modelScale = [1.2, 1.2, 1.2];
@@ -275,13 +279,13 @@ export const CarControls = () => {
   };
 
   const carModels = [
-    { name: 'BMW G20', path: './bmw_g20.glb' },
-    { name: 'BMW E92 M3', path: './bmw_m3_e92.glb' },
-    { name: 'BMW F82 M4', path: './bmw_m4_f82.glb' },
-    { name: 'BMW G82 M4', path: './bmw_m4_g82.glb' },
-    { name: 'VW Golf 5', path: './vw_golf_5.glb' },
-    { name: 'VW Golf 6', path: './vw_golf_6.glb' },
-    { name: 'BMW E46 M3 CSL', path: './e46.glb' },
+    { name: 'BMW G20', path: '/models/bmw_g20.glb' },
+    { name: 'BMW E92 M3', path: '/models/bmw_m3_e92.glb' },
+    { name: 'BMW F82 M4', path: '/models/bmw_m4_f82.glb' },
+    { name: 'BMW G82 M4', path: '/models/bmw_m4_g82.glb' },
+    { name: 'VW Golf 5', path: '/models/vw_golf_5.glb' },
+    { name: 'VW Golf 6', path: '/models/vw_golf_6.glb' },
+    { name: 'BMW E46 M3 CSL', path: '/models/e46.glb' },
   ];
 
   return (
@@ -339,7 +343,7 @@ export const CarControls = () => {
 
 // Main component with context provider
 const CarModel = () => {
-  const [selectedModel, setSelectedModel] = useState('./bmw_g20.glb');
+  const [selectedModel, setSelectedModel] = useState('/models/bmw_g20.glb');
   const [tint, setTint] = useState(100);
   const [selectedCategories, setSelectedCategories] = useState({
     front_windows: false,
