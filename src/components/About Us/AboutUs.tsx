@@ -4,7 +4,7 @@ export default function Home() {
             <div className="content">
                 <div className="wrapper clearfloat">
                     <div className="text-module clearfloat">
-                        ТИНТКОМ ООД е фирма занимаваща се с внос и продажба на
+                        Tintify е фирма занимаваща се с внос и продажба на
                         висококачествените американски авто фолиа на фирмите- Solar Gard и
                         Johnson Window Films.
                         <br />

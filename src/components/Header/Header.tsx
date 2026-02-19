@@ -6,11 +6,11 @@ export default function Header() {
     // Dynamic page info based on route
     const getPageInfo = () => {
         const path = location.pathname
-        
+
         if (path === '/about-us') {
             return { title: 'За нас', breadcrumb: 'За нас' }
         } else if (path === '/tinting') {
-            return { title: 'Тониране', breadcrumb: 'Тониране' }
+            return { title: '3D Модели', breadcrumb: '3D Модели' }
         } else {
             return { title: 'Начало', breadcrumb: null }
         }
@@ -46,6 +46,11 @@ export default function Header() {
                             <li className="lvl-1">
                                 <Link className="ml-223" to="/about-us">
                                     За нас
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
+                                <Link className="ml-223" to="/tinting">
+                                    3D Модели
                                 </Link>
                             </li>
                         </ul>
@@ -112,7 +117,9 @@ export default function Header() {
                             </div>
                         </div>
                         <div className="favourite">
-                            <a href="/bg/favorites-products" />
+                            <a href="/bg/favorites-products">
+                                <i className="fa-regular fa-heart" />
+                            </a>
                         </div>
                         <div className="cart">
                             <a
@@ -141,12 +148,7 @@ export default function Header() {
                         <h1>{pageInfo.title}</h1>
                         <div className="breadcrumb">
                             <Link to="/">Начало</Link>
-                            {pageInfo.breadcrumb && (
-                                <>
-                                    <span> / </span>
-                                    <Link to={location.pathname}>{pageInfo.breadcrumb}</Link>
-                                </>
-                            )}
+                            <Link to={location.pathname}>{pageInfo.breadcrumb}</Link>
                         </div>
                     </div>
                 </div>

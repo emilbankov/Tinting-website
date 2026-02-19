@@ -1,6 +1,28 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HomeHeader() {
+    useEffect(() => {
+        // Remove existing script if it exists
+        const existingScript = document.querySelector('script[src="/js/some-main-scripts.js"]');
+        if (existingScript) {
+            document.body.removeChild(existingScript);
+        }
+
+        // Create and load the main scripts file
+        const script = document.createElement('script');
+        script.src = '/js/some-main-scripts.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+            // Cleanup when component unmounts
+            if (document.body.contains(script)) {
+                document.body.removeChild(script);
+            }
+        };
+    }, []);
+
     return (
         <>
             <header>
@@ -34,6 +56,11 @@ export default function HomeHeader() {
                             <li className="lvl-1">
                                 <Link className="ml-23" to="/how-to-order">
                                     Как да поръчаме
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
+                                <Link className="ml-23" to="/tinting">
+                                    3D Модели
                                 </Link>
                             </li>
                             <li className="lvl-1">
@@ -104,7 +131,9 @@ export default function HomeHeader() {
                             </div>
                         </div>
                         <div className="favourite">
-                            <Link to="/favorites" />
+                            <a href="/bg/favorites-products">
+                                <i className="fa-regular fa-heart" />
+                            </a>
                         </div>
                         <div className="cart">
                             <Link

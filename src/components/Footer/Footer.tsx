@@ -15,11 +15,6 @@ export default function Footer() {
                                     />
                                 </Link>
                             </div>
-                            <div className="socials">
-                                <a href="https://www.facebook.com/Tintcomcom">
-                                    <i className="fa-brands fa-facebook-f" />
-                                </a>
-                            </div>
                         </div>
                         <div className="flex-item">
                             <div className="footer-menu">
@@ -110,7 +105,7 @@ export default function Footer() {
                                 <div className="foot-content">
                                     <div className="foot-content-inner">
                                         <ul>
-                                            <li><i className="fa-solid fa-location-dot"></i> ТИНТКОМ ООД</li>
+                                            <li><i className="fa-solid fa-location-dot"></i>Пловдив, България</li>
                                             <li><i className="fa-solid fa-phone"></i>+359 899 123 456</li>
                                             <li><i className="fa-solid fa-envelope"></i>stoqnegay@tintify.com</li>
                                         </ul>
