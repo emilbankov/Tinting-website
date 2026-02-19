@@ -11,6 +11,8 @@ export default function Header() {
             return { title: 'За нас', breadcrumb: 'За нас' }
         } else if (path === '/tinting') {
             return { title: '3D Модели', breadcrumb: '3D Модели' }
+        } else if (path === '/gallery') {
+            return { title: 'Галерия', breadcrumb: 'Галерия' }
         } else {
             return { title: 'Начало', breadcrumb: null }
         }
@@ -51,6 +53,11 @@ export default function Header() {
                             <li className="lvl-1">
                                 <Link className="ml-223" to="/tinting">
                                     3D Модели
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
+                                <Link className="ml-223" to="/gallery">
+                                    Галерия
                                 </Link>
                             </li>
                         </ul>

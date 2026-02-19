@@ -64,6 +64,11 @@ export default function HomeHeader() {
                                 </Link>
                             </li>
                             <li className="lvl-1">
+                                <Link className="ml-23" to="/gallery">
+                                    Галерия
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
                                 <Link className="ml-5" to="/contact">
                                     Контакти
                                 </Link>
