@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home/Home'
 import HomeHeader from './components/Home Header/HomeHeader'
+import Models from './components/3D models/3DModels'
 import TintingPage from './components/TintingPage'
 import BackToTop from './components/Back To Top/BackToTop'
 import MobileMenu from './components/Mobile Menu/MobileMenu'
@@ -20,7 +21,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about-us" element={<AboutUs />} />
-                <Route path="/tinting" element={<TintingPage />} />
+                <Route path="/tinting" element={<Models />} />
             </Routes>
 
             <BackToTop />
