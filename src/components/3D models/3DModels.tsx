@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CarCanvas, CarControls, CarModelContext } from '../CarModel';
+import { CarCanvas, CarControls, CarModelContext } from './Car Model/CarModel';
 
 // Create context provider wrapper
 const CarModelProvider = ({ children }: { children: React.ReactNode }) => {
