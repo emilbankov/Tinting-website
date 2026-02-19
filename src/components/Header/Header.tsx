@@ -46,18 +46,28 @@ export default function Header() {
                     <nav id="menu">
                         <ul>
                             <li className="lvl-1">
+                                <Link className="ml-23" to="/">
+                                    Начало
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
+                                <Link className="ml-23" to="/tinting">
+                                    3D Модели
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
+                                <Link className="ml-23" to="/gallery">
+                                    Галерия
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
                                 <Link className="ml-223" to="/about-us">
                                     За нас
                                 </Link>
                             </li>
                             <li className="lvl-1">
-                                <Link className="ml-223" to="/tinting">
-                                    3D Модели
-                                </Link>
-                            </li>
-                            <li className="lvl-1">
-                                <Link className="ml-223" to="/gallery">
-                                    Галерия
+                                <Link className="ml-5" to="/contact">
+                                    Контакти
                                 </Link>
                             </li>
                         </ul>

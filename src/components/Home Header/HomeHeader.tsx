@@ -49,13 +49,8 @@ export default function HomeHeader() {
                     <nav id="menu">
                         <ul>
                             <li className="lvl-1">
-                                <Link className="ml-223" to="/about-us">
-                                    За нас
-                                </Link>
-                            </li>
-                            <li className="lvl-1">
-                                <Link className="ml-23" to="/how-to-order">
-                                    Как да поръчаме
+                                <Link className="ml-23" to="/">
+                                    Начало
                                 </Link>
                             </li>
                             <li className="lvl-1">
@@ -66,6 +61,11 @@ export default function HomeHeader() {
                             <li className="lvl-1">
                                 <Link className="ml-23" to="/gallery">
                                     Галерия
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
+                                <Link className="ml-223" to="/about-us">
+                                    За нас
                                 </Link>
                             </li>
                             <li className="lvl-1">
