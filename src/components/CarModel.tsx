@@ -1,8 +1,46 @@
 // src/components/CarModel/CarModel.tsx
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, createContext, useContext } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
+
+// Create context for shared state
+export const CarModelContext = createContext<{
+  selectedModel: string;
+  setSelectedModel: (model: string) => void;
+  tint: number;
+  setTint: (tint: number) => void;
+  selectedCategories: {
+    front_windows: boolean;
+    back_windows: boolean;
+    windshield: boolean;
+    rear_windshield: boolean;
+    headlights: boolean;
+    taillights: boolean;
+  };
+  setSelectedCategories: React.Dispatch<React.SetStateAction<{
+    front_windows: boolean;
+    back_windows: boolean;
+    windshield: boolean;
+    rear_windshield: boolean;
+    headlights: boolean;
+    taillights: boolean;
+  }>>;
+}>({
+  selectedModel: './bmw_g20.glb',
+  setSelectedModel: () => {},
+  tint: 100,
+  setTint: () => {},
+  selectedCategories: {
+    front_windows: false,
+    back_windows: true,
+    windshield: false,
+    rear_windshield: true,
+    headlights: false,
+    taillights: false,
+  },
+  setSelectedCategories: () => {},
+});
 
 const tintValues = {
   5: 0.95,
@@ -56,44 +94,11 @@ const ClickHandler = ({ scene }: { scene: THREE.Group }) => {
   return null;
 };
 
-const CarModel = () => {
-  const [selectedModel, setSelectedModel] = useState('./bmw_g20.glb');
+// Canvas component for 3D model
+export const CarCanvas = () => {
+  const { selectedModel, tint, selectedCategories } = useContext(CarModelContext);
   const { scene, nodes } = useGLTF(selectedModel);
-  const [tint, setTint] = useState(100);
-  const [selectedCategories, setSelectedCategories] = useState({
-    front_windows: false,
-    back_windows: true,
-    windshield: false,
-    rear_windshield: true,
-    headlights: false,
-    taillights: false,
-  });
   const originalMaterials = useRef<Map<string, THREE.Material>>(new Map());
-
-  const handleModelChange = (modelPath: string) => {
-    setSelectedModel(modelPath);
-    // Reset all to 100% (unselected), then select back windows and rear windshield
-    setSelectedCategories({
-      front_windows: false,
-      back_windows: true,
-      windshield: false,
-      rear_windshield: true,
-      headlights: false,
-      taillights: false,
-    });
-    // Clear original materials cache when model changes
-    originalMaterials.current.clear();
-  };
-
-  const carModels = [
-    { name: 'BMW G20', path: './bmw_g20.glb' },
-    { name: 'BMW E92 M3', path: './bmw_m3_e92.glb' },
-    { name: 'BMW F82 M4', path: './bmw_m4_f82.glb' },
-    { name: 'BMW G82 M4', path: './bmw_m4_g82.glb' },
-    { name: 'VW Golf 5', path: './vw_golf_5.glb' },
-    { name: 'VW Golf 6', path: './vw_golf_6.glb' },
-    { name: 'BMW E46 M3 CSL', path: './e46.glb' },
-  ];
 
   console.log('=== GLTF NODES ===');
   console.log('All nodes:', nodes);
@@ -234,7 +239,7 @@ const CarModel = () => {
   }
 
   return (
-    <div style={{ width: "1300px", height: "800px" }}>
+    <div className="car-canvas-wrapper">
       <Canvas camera={{ position: cameraPosition, fov: 65 }}>
         <ambientLight intensity={1.0} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
@@ -249,29 +254,56 @@ const CarModel = () => {
         <ClickHandler scene={scene} />
         <OrbitControls enableZoom={true} />
       </Canvas>
-      <div className="controls">
-        <div style={{ marginBottom: '15px' }}>
-          <label style={{ marginRight: '10px' }}>Select Car Model:</label>
+    </div>
+  );
+};
+
+// Controls component
+export const CarControls = () => {
+  const { selectedModel, setSelectedModel, tint, setTint, selectedCategories, setSelectedCategories } = useContext(CarModelContext);
+
+  const handleModelChange = (modelPath: string) => {
+    setSelectedModel(modelPath);
+    setSelectedCategories({
+      front_windows: false,
+      back_windows: true,
+      windshield: false,
+      rear_windshield: true,
+      headlights: false,
+      taillights: false,
+    });
+  };
+
+  const carModels = [
+    { name: 'BMW G20', path: './bmw_g20.glb' },
+    { name: 'BMW E92 M3', path: './bmw_m3_e92.glb' },
+    { name: 'BMW F82 M4', path: './bmw_m4_f82.glb' },
+    { name: 'BMW G82 M4', path: './bmw_m4_g82.glb' },
+    { name: 'VW Golf 5', path: './vw_golf_5.glb' },
+    { name: 'VW Golf 6', path: './vw_golf_6.glb' },
+    { name: 'BMW E46 M3 CSL', path: './e46.glb' },
+  ];
+
+  return (
+    <div className="car-controls">
+      <div className="controls-section">
+        <h3>Изберете модел кола</h3>
+        <div className="model-buttons">
           {carModels.map((model) => (
             <button 
               key={model.path} 
               onClick={() => handleModelChange(model.path)} 
-              style={{ 
-                margin: '5px', 
-                padding: '10px 15px', 
-                backgroundColor: selectedModel === model.path ? '#0F7BA9' : '#1CAAD9', 
-                color: 'white', 
-                border: 'none', 
-                borderRadius: '5px', 
-                cursor: 'pointer' 
-              }}
+              className={selectedModel === model.path ? 'active' : ''}
             >
               {model.name}
             </button>
           ))}
         </div>
-        <div style={{ marginBottom: '15px' }}>
-          <label style={{ marginRight: '10px', display: 'block', marginBottom: '10px' }}>Tint Categories:</label>
+      </div>
+      
+      <div className="controls-section">
+        <h3>Категории фолиране</h3>
+        <div className="category-buttons">
           {Object.keys(selectedCategories).map((category) => (
             <button
               key={category}
@@ -279,49 +311,22 @@ const CarModel = () => {
                 ...prev,
                 [category]: !prev[category as keyof typeof prev]
               }))}
-              style={{ 
-                margin: '5px', 
-                padding: '10px 15px', 
-                backgroundColor: selectedCategories[category as keyof typeof selectedCategories] ? '#0F7BA9' : '#1CAAD9', 
-                color: 'white', 
-                border: 'none', 
-                borderRadius: '5px', 
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '500',
-                transition: 'all 0.2s ease',
-                boxShadow: selectedCategories[category as keyof typeof selectedCategories] ? '0 2px 4px rgba(0,0,0,0.2)' : '0 1px 3px rgba(0,0,0,0.1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = selectedCategories[category as keyof typeof selectedCategories] ? '#0E6A95' : '#1A8FC7';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = selectedCategories[category as keyof typeof selectedCategories] ? '#0F7BA9' : '#1CAAD9';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
+              className={selectedCategories[category as keyof typeof selectedCategories] ? 'active' : ''}
             >
               {category.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
             </button>
           ))}
         </div>
-        <div>
-          <label style={{ marginRight: '10px' }}>Window Tint:</label>
+      </div>
+      
+      <div className="controls-section">
+        <h3>Фолиране на стъкла</h3>
+        <div className="tint-buttons">
           {Object.keys(tintValues).map((key) => (
             <button 
               key={key} 
-              onClick={() => setTint(Number(key))} 
-              style={{ 
-                margin: '5px', 
-                padding: '10px', 
-                width: '60px',
-                height: '40px',
-                backgroundColor: '#1CAAD9', 
-                color: 'white', 
-                border: 'none', 
-                borderRadius: '5px', 
-                cursor: 'pointer' 
-              }}
+              onClick={() => setTint(Number(key))}
+              className={tint === Number(key) ? 'active' : ''}
             >
               {key}%
             </button>
@@ -329,6 +334,34 @@ const CarModel = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+// Main component with context provider
+const CarModel = () => {
+  const [selectedModel, setSelectedModel] = useState('./bmw_g20.glb');
+  const [tint, setTint] = useState(100);
+  const [selectedCategories, setSelectedCategories] = useState({
+    front_windows: false,
+    back_windows: true,
+    windshield: false,
+    rear_windshield: true,
+    headlights: false,
+    taillights: false,
+  });
+
+  return (
+    <CarModelContext.Provider value={{
+      selectedModel,
+      setSelectedModel,
+      tint,
+      setTint,
+      selectedCategories,
+      setSelectedCategories,
+    }}>
+      <CarCanvas />
+      <CarControls />
+    </CarModelContext.Provider>
   );
 };
 
