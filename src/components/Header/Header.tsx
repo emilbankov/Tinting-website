@@ -13,6 +13,8 @@ export default function Header() {
             return { title: '3D Модели', breadcrumb: '3D Модели' }
         } else if (path === '/gallery') {
             return { title: 'Галерия', breadcrumb: 'Галерия' }
+        } else if (path === '/booking') {
+            return { title: 'Запазване на час', breadcrumb: 'Запазване на час' }
         } else {
             return { title: 'Начало', breadcrumb: null }
         }
@@ -58,6 +60,11 @@ export default function Header() {
                             <li className="lvl-1">
                                 <Link className="ml-23" to="/gallery">
                                     Галерия
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
+                                <Link className="ml-23" to="/booking">
+                                    Запазване на час
                                 </Link>
                             </li>
                             <li className="lvl-1">

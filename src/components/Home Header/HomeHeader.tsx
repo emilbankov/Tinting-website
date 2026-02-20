@@ -64,6 +64,11 @@ export default function HomeHeader() {
                                 </Link>
                             </li>
                             <li className="lvl-1">
+                                <Link className="ml-5" to="/booking">
+                                    Запазване на час
+                                </Link>
+                            </li>
+                            <li className="lvl-1">
                                 <Link className="ml-223" to="/about-us">
                                     За нас
                                 </Link>
@@ -206,7 +211,7 @@ export default function HomeHeader() {
                                     </figure>
                                 </div>
                                 <div>
-                                    <figure style={{ opacity: "0.9" }}>
+                                    <figure style={{ opacity: "0.95" }}>
                                         <img src="/images/front_window.png" alt="" />
                                     </figure>
                                 </div>
@@ -238,7 +243,7 @@ export default function HomeHeader() {
                                     </figure>
                                 </div>
                                 <div>
-                                    <figure style={{ opacity: "0.85" }}>
+                                    <figure style={{ opacity: "0.95" }}>
                                         <img src="/images/back_window.png" alt="" />
                                     </figure>
                                 </div>

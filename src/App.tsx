@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer'
 import AboutUs from './components/About Us/AboutUs'
 import Header from './components/Header/Header'
 import Gallery from './components/Gallery/Gallery'
+import Booking from './components/Booking/Booking'
 import { useLocation } from 'react-router-dom'
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/tinting" element={<Models />} />
                 <Route path="/gallery" element={<Gallery />} />
+                <Route path="/booking" element={<Booking />} />
             </Routes>
 
             <BackToTop />
